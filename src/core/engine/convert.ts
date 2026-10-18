@@ -261,11 +261,15 @@ export function convertDocument(input: string | JsonValue, compiled: CompiledMap
 
   const selection = selectRecords(root, compiled.config.records, compiled.config.stringJson);
   if (!selection.ok) return fatal(selection.failure);
+  return convertRecords(selection.records, compiled);
+}
 
+/** 이미 고른 레코드 목록을 변환한다(샘플 미리보기는 앞부분 레코드만 넘긴다). */
+export function convertRecords(records: JsonValue[], compiled: CompiledMapping): ConversionResult {
   const rows: OutputRow[] = [];
   const errors: ConversionError[] = [];
   let failedRecords = 0;
-  selection.records.forEach((record, index) => {
+  records.forEach((record, index) => {
     const result = convertRecord(record, index, compiled);
     rows.push(...result.rows);
     errors.push(...result.errors);
@@ -274,7 +278,7 @@ export function convertDocument(input: string | JsonValue, compiled: CompiledMap
 
   const okRows = rows.filter((row) => !row.failed);
   const stats: ConversionStats = {
-    sourceRecords: selection.records.length,
+    sourceRecords: records.length,
     outputRows: okRows.length,
     failedRecords,
     failedRows: rows.length - okRows.length,

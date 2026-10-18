@@ -1,0 +1,477 @@
+/* 헤더 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerMain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 280px;
+  flex: 1;
+}
+
+.nameInput {
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  width: 100%;
+  max-width: 480px;
+}
+
+.versionTag,
+.statusTag,
+.dirty,
+.demoTag {
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.statusTag {
+  background: var(--hover);
+}
+
+.dirty {
+  color: var(--warn);
+  border-color: var(--warn-border);
+  background: var(--warn-soft);
+}
+
+.demoTag {
+  color: var(--warn);
+  border-color: var(--warn-border);
+}
+
+.infoBox,
+.errorBox {
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  white-space: pre-line;
+}
+
+.infoBox {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.errorBox {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* 진행 단계 */
+.progress {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  counter-reset: step;
+}
+
+.progress li {
+  counter-increment: step;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.progress li::before {
+  content: counter(step) ". ";
+}
+
+.progress .done {
+  color: var(--ok);
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+
+/* 공통 */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.subTitle {
+  font-size: 0.95rem;
+}
+
+.summary {
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  background: var(--hover);
+  border-radius: 8px;
+}
+
+.errorText {
+  color: var(--danger);
+  font-size: 0.9rem;
+  white-space: pre-line;
+}
+
+.okText {
+  color: var(--ok);
+  font-size: 0.9rem;
+}
+
+.warn {
+  color: var(--warn);
+  font-size: 0.85rem;
+}
+
+.required {
+  margin-left: 6px;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  vertical-align: middle;
+}
+
+.advanced {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.advanced summary {
+  cursor: pointer;
+  color: var(--muted);
+}
+
+/* 샘플 */
+.candidates {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.candidate {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.findings {
+  font-size: 0.85rem;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* 매핑 표 + 상세 */
+.mappingGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .mappingGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.mappingTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.mappingTable th,
+.mappingTable td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.mappingTable th {
+  background: var(--hover);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mappingTable tbody tr {
+  cursor: pointer;
+}
+
+.mappingTable tbody tr:hover {
+  background: var(--hover);
+}
+
+.selectedRow {
+  background: var(--accent-soft) !important;
+}
+
+.pathCell {
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.clip {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exampleValue {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.85rem;
+}
+
+.exampleMarker {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.statusUnmapped,
+.statusBlank,
+.statusReview,
+.statusOk {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.statusUnmapped {
+  background: var(--hover);
+  color: var(--muted);
+}
+
+.statusBlank {
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.statusReview {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+.statusOk {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.detail {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--background);
+}
+
+.detailTitle {
+  font-size: 1.05rem;
+}
+
+.detailSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailSection h4 {
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+.examples {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+}
+
+.policyRow {
+  display: grid;
+  grid-template-columns: 140px auto 1fr;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.stepCard,
+.refBox,
+.listItem {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface);
+}
+
+.listItem {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.listItem > :first-child {
+  flex: 1;
+}
+
+.miniTable {
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.miniTable th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 2px 4px;
+}
+
+.miniTable td {
+  padding: 2px 4px;
+}
+
+.miniTable input {
+  width: 100%;
+  min-width: 90px;
+}
+
+/* 경로 선택기 */
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.path {
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  background: var(--hover);
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.pickerPanel {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface);
+}
+
+.optionList {
+  list-style: none;
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.option,
+.optionSelected {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  color: inherit;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.option:hover {
+  background: var(--hover);
+}
+
+.optionSelected {
+  background: var(--accent-soft);
+}
+
+.optionPath {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.85rem;
+}
+
+.optionMeta {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.badge,
+.badgeWarn {
+  margin-left: 6px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badgeWarn {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+/* 설정 */
+.settingsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.issues {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

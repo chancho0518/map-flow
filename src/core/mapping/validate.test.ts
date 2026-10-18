@@ -65,6 +65,30 @@ describe("사용 가능 저장 조건", () => {
     expect(issues).toHaveLength(2);
   });
 
+  it("경로를 고르지 않은 소스는 사용 가능 저장 불가", () => {
+    const issues = validateMappingConfig(
+      makeConfig({}, [
+        column("memo", { source: { kind: "path", scope: "record", path: [] } }),
+        column("phone", {
+          source: {
+            kind: "pick",
+            scope: "record",
+            arrayPath: ["c"],
+            select: { by: "match", field: [], equals: "x" },
+            valuePath: [],
+            onNone: "missing",
+            onMany: "error",
+          },
+        }),
+      ]),
+      demoSchema,
+    );
+    expect(issues.map((i) => [i.where, i.message])).toEqual([
+      ["연락처", "조건 필드를 선택하세요."],
+      ["메모", "입력 경로를 선택하세요."],
+    ]);
+  });
+
   it("행 펼치기 없이 항목 기준 경로를 쓰면 실행 불가", () => {
     const issues = validateMappingConfig(
       makeConfig({}, [column("productCode", { source: { kind: "path", scope: "item", path: ["sku"] } })]),

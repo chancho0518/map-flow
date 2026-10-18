@@ -1,6 +1,13 @@
 import type { OutputSchema } from "@/schemas/output-schema";
 import { configValueToScalar, formatCellValue } from "@/core/transforms/format";
-import { MappingConfigSchema, usesItemScope, type ColumnMapping, type MappingConfig, type Policy } from "./config";
+import {
+  MappingConfigSchema,
+  usesItemScope,
+  type ColumnMapping,
+  type MappingConfig,
+  type Policy,
+  type Source,
+} from "./config";
 
 export interface ConfigIssue {
   /** 문제 위치(설정 JSON 경로 또는 컬럼 ID) */
@@ -81,6 +88,9 @@ export function validateMappingConfig(config: MappingConfig, schema: OutputSchem
       notReady(where, "필수 컬럼을 빈칸으로 둘 수 없습니다.");
     }
 
+    const emptyPathMessage = missingPathMessage(mapping.source);
+    if (emptyPathMessage) notReady(where, emptyPathMessage);
+
     if (usesItemScope(mapping.source) && !config.explode) {
       blocking(where, "배열 항목 기준 경로는 행 펼치기를 설정했을 때만 쓸 수 있습니다.");
     }
@@ -123,5 +133,30 @@ export function validateMappingConfig(config: MappingConfig, schema: OutputSchem
     }
   }
 
+  if (config.explode && config.explode.path.length === 0) {
+    blocking("행 펼치기", "펼칠 배열 경로가 비어 있습니다.");
+  }
+
   return issues;
+}
+
+/** 경로를 아직 고르지 않은 소스(빈 경로는 레코드 전체를 가리켜 셀 값이 될 수 없다) */
+function missingPathMessage(source: Source): string | undefined {
+  switch (source.kind) {
+    case "path":
+      return source.path.length === 0 ? "입력 경로를 선택하세요." : undefined;
+    case "firstOf":
+      return source.sources.some((ref) => ref.path.length === 0) ? "우선순위 경로 중 비어 있는 것이 있습니다." : undefined;
+    case "concat":
+      return source.parts.some((part) => part.kind === "path" && part.path.length === 0)
+        ? "결합할 경로 중 비어 있는 것이 있습니다."
+        : undefined;
+    case "pick":
+      if (source.arrayPath.length === 0) return "배열을 선택하세요.";
+      return source.select.by === "match" && source.select.field.length === 0 ? "조건 필드를 선택하세요." : undefined;
+    case "join":
+      return source.arrayPath.length === 0 ? "배열을 선택하세요." : undefined;
+    default:
+      return undefined;
+  }
 }

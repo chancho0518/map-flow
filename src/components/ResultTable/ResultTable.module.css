@@ -1,0 +1,129 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
+.toggle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scroll {
+  overflow: auto;
+  max-height: 420px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.85rem;
+  min-width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--hover);
+  z-index: 2;
+  font-weight: 600;
+}
+
+.rowHead {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 1;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.table thead .rowHead {
+  z-index: 3;
+  background: var(--hover);
+}
+
+.table td {
+  cursor: pointer;
+}
+
+.table td:hover {
+  background: var(--hover);
+}
+
+.failedRow td,
+.failedRow .rowHead {
+  background: var(--danger-soft);
+}
+
+.errorCell {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* 빈 셀 표시는 화면용 기호이며 CSV 값에는 들어가지 않는다. */
+.empty::after {
+  content: "·";
+  color: var(--muted);
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.detail {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detailError {
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.value {
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.85rem;
+  background: var(--hover);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.recordErrors {
+  font-size: 0.85rem;
+  color: var(--danger);
+}
