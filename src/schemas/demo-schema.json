@@ -1,0 +1,84 @@
+{
+  "id": "demo-customer",
+  "version": 1,
+  "name": "고객 데모",
+  "isDemo": true,
+  "rowDescription": "기본: 원본 레코드 1건 = CSV 1행. 매핑에서 행 펼치기를 설정하면 펼친 배열 항목 1개 = CSV 1행이며 레코드의 다른 값은 각 행에 복사된다.",
+  "columns": [
+    {
+      "id": "customerNo",
+      "header": "고객번호",
+      "description": "고객을 식별하는 번호. 앞자리 0과 자릿수를 그대로 유지한다.",
+      "type": "string",
+      "required": true,
+      "aliases": ["customerNo", "memberNo", "custId", "customer_id", "memberId", "고객번호"]
+    },
+    {
+      "id": "customerName",
+      "header": "고객명",
+      "description": "고객 이름.",
+      "type": "string",
+      "required": true,
+      "aliases": ["customerName", "name", "memberName", "fullName", "고객명", "성명"]
+    },
+    {
+      "id": "joinDate",
+      "header": "가입일",
+      "description": "가입한 날짜. 시각이 포함된 값은 지정한 시간대 기준 날짜로 바꾼다.",
+      "type": "date",
+      "required": false,
+      "aliases": ["joinDate", "joinedAt", "signupDate", "registeredAt", "createdAt", "가입일"],
+      "format": "YYYY-MM-DD"
+    },
+    {
+      "id": "grade",
+      "header": "등급",
+      "description": "고객 등급.",
+      "type": "string",
+      "required": false,
+      "aliases": ["grade", "level", "tier", "membership", "등급"],
+      "allowedValues": ["일반", "우수", "VIP"]
+    },
+    {
+      "id": "points",
+      "header": "포인트",
+      "description": "보유 포인트(정수).",
+      "type": "integer",
+      "required": false,
+      "aliases": ["points", "point", "balance", "pointBalance", "포인트"]
+    },
+    {
+      "id": "active",
+      "header": "활성여부",
+      "description": "현재 활성 고객인지 여부.",
+      "type": "boolean",
+      "required": false,
+      "aliases": ["active", "isActive", "enabled", "status", "활성여부"],
+      "format": "Y/N"
+    },
+    {
+      "id": "phone",
+      "header": "연락처",
+      "description": "대표 연락처. 형식을 바꾸지 않는다.",
+      "type": "string",
+      "required": false,
+      "aliases": ["phone", "mobile", "tel", "phoneNumber", "contact", "연락처"]
+    },
+    {
+      "id": "memo",
+      "header": "메모",
+      "description": "자유 형식 메모.",
+      "type": "string",
+      "required": false,
+      "aliases": ["memo", "note", "notes", "comment", "remark", "메모"]
+    },
+    {
+      "id": "productCode",
+      "header": "상품코드",
+      "description": "보유 상품 코드. 행 펼치기 시 상품마다 한 행.",
+      "type": "string",
+      "required": false,
+      "aliases": ["productCode", "sku", "itemCode", "code", "상품코드"]
+    }
+  ]
+}

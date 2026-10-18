@@ -1,0 +1,145 @@
+:root {
+  --background: #f7f7f8;
+  --surface: #ffffff;
+  --foreground: #1a1a1a;
+  --muted: #5f6368;
+  --border: #e2e3e5;
+  --hover: #f0f1f3;
+  --accent: #1f5fbf;
+  --accent-soft: #e6eefa;
+  --warn: #8a5300;
+  --warn-soft: #fff4e0;
+  --warn-border: #f2d39b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121314;
+    --surface: #1b1c1e;
+    --foreground: #e8e8e8;
+    --muted: #a0a4a8;
+    --border: #2e3033;
+    --hover: #26282b;
+    --accent: #8db4f0;
+    --accent-soft: #1d2a3d;
+    --warn: #f2c27a;
+    --warn-soft: #2e2416;
+    --warn-border: #5a4524;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic",
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer {
+  padding: 12px 24px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.notice {
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pending {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
