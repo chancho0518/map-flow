@@ -1,0 +1,14 @@
+{
+  "customer.id": 12345678901234567890123,
+  "info": {
+    "full[name]": "Lee \"Jay\" Kim",
+    "a.b": { "c": "02-555-0000" }
+  },
+  "__proto__": { "polluted": "yes" },
+  "registered": 20240229,
+  "rank": "",
+  "pointBalance": 0,
+  "active": false,
+  "tel": null,
+  "notes": "  앞뒤 공백  "
+}

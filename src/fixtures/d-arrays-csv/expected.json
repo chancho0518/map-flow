@@ -1,0 +1,9 @@
+{
+  "status": "completed_with_errors",
+  "stats": { "sourceRecords": 4, "outputRows": 5, "failedRecords": 2, "failedRows": 2 },
+  "errors": [
+    { "recordIndex": 1, "columnId": "joinDate", "code": "DATE_INVALID" },
+    { "recordIndex": 1, "columnId": "phone", "code": "MATCH_AMBIGUOUS" },
+    { "recordIndex": 3, "itemIndex": 1, "columnId": "productCode", "code": "VALUE_NULL" }
+  ]
+}

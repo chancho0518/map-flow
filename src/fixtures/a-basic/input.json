@@ -1,0 +1,31 @@
+[
+  {
+    "memberNo": "00123",
+    "profile": { "name": "홍길동", "phone": "010-1234-5678" },
+    "joinedAt": "2024-01-15",
+    "level": "GOLD",
+    "point": 1500,
+    "isActive": true,
+    "memo": "우수 고객",
+    "products": [{ "code": "P-100" }]
+  },
+  {
+    "memberNo": "00456",
+    "profile": { "name": "김영희", "phone": "010-9876-5432" },
+    "joinedAt": "2023-12-01",
+    "level": "SILVER",
+    "point": 0,
+    "isActive": false,
+    "memo": "",
+    "products": []
+  },
+  {
+    "memberNo": "78901",
+    "profile": { "name": "이철수" },
+    "joinedAt": "2025-07-30",
+    "level": "VIP",
+    "point": 320,
+    "isActive": true,
+    "products": [{ "code": "P-200" }, { "code": "P-300" }]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "status": "completed_with_errors",
+  "stats": { "sourceRecords": 5, "outputRows": 3, "failedRecords": 2, "failedRows": 2 },
+  "errors": [
+    { "recordIndex": 3, "columnId": "customerName", "code": "VALUE_MISSING" },
+    { "recordIndex": 4, "columnId": "customerName", "code": "STRING_JSON_INVALID" }
+  ]
+}

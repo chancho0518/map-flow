@@ -1,0 +1,2 @@
+# fixture 기대값은 LF로 고정한다. 테스트가 레코드 구분 줄바꿈만 CRLF로 바꿔 비교한다.
+src/fixtures/** text eol=lf

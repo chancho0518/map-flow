@@ -1,0 +1,54 @@
+{
+  "customers": [
+    {
+      "no": "000777",
+      "nm": "한, 결",
+      "since": "2026/01/05",
+      "grade": "B",
+      "pt": 30,
+      "on": 1,
+      "contacts": [
+        { "type": "home", "value": "02-111-2222" },
+        { "type": "mobile", "value": "+82-10-3333-4444" }
+      ],
+      "memo": "=SUM(A1:A2)",
+      "orders": [{ "sku": "SKU-1" }, { "sku": "SKU-2" }]
+    },
+    {
+      "no": "000778",
+      "nm": "날짜 오류",
+      "since": "2026/02/30",
+      "grade": "A",
+      "pt": 5,
+      "on": 0,
+      "contacts": [
+        { "type": "mobile", "value": "010-1" },
+        { "type": "mobile", "value": "010-2" }
+      ],
+      "memo": "@메모",
+      "orders": [{ "sku": "SKU-3" }]
+    },
+    {
+      "no": "000779",
+      "nm": "빈 주문",
+      "since": "2026/03/01",
+      "grade": "C",
+      "pt": 7,
+      "on": 1,
+      "contacts": [{ "type": "home", "value": "031-000-0000" }],
+      "memo": "여러 줄\n메모",
+      "orders": []
+    },
+    {
+      "no": "000780",
+      "nm": "부분 실패",
+      "since": "2026/03/02",
+      "grade": "A",
+      "pt": 9,
+      "on": 1,
+      "contacts": [{ "type": "mobile", "value": "010-5555-6666" }],
+      "memo": "-마이너스",
+      "orders": [{ "sku": "SKU-4" }, { "sku": null }, { "sku": "SKU-6" }]
+    }
+  ]
+}

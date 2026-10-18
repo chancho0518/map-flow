@@ -1,0 +1,116 @@
+{
+  "formatVersion": 1,
+  "id": "fixture-d",
+  "name": "D: 행 펼치기 + 조건 선택 + CSV 특수값",
+  "version": 1,
+  "status": "ready",
+  "outputSchema": { "id": "demo-customer", "version": 1 },
+  "records": { "mode": "array", "path": ["customers"] },
+  "stringJson": { "maxDepth": 2, "maxStringLength": 1000000 },
+  "explode": { "path": ["orders"], "onEmpty": "blankRow" },
+  "columns": [
+    {
+      "columnId": "customerNo",
+      "source": { "kind": "path", "scope": "record", "path": ["no"] },
+      "steps": [],
+      "whenMissing": { "action": "error" },
+      "whenNull": { "action": "error" },
+      "whenEmpty": { "action": "error" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "customerName",
+      "source": { "kind": "path", "scope": "record", "path": ["nm"] },
+      "steps": [],
+      "whenMissing": { "action": "error" },
+      "whenNull": { "action": "error" },
+      "whenEmpty": { "action": "error" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "joinDate",
+      "source": { "kind": "path", "scope": "record", "path": ["since"] },
+      "steps": [{ "op": "date", "input": { "kind": "date", "format": "YYYY/MM/DD" }, "outputOffset": "+09:00" }],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "blank" },
+      "whenEmpty": { "action": "blank" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "grade",
+      "source": { "kind": "path", "scope": "record", "path": ["grade"] },
+      "steps": [
+        {
+          "op": "mapCode",
+          "entries": [
+            { "from": "A", "to": "VIP" },
+            { "from": "B", "to": "우수" },
+            { "from": "C", "to": "일반" }
+          ],
+          "onUnknown": "error"
+        }
+      ],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "blank" },
+      "whenEmpty": { "action": "blank" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "points",
+      "source": { "kind": "path", "scope": "record", "path": ["pt"] },
+      "steps": [],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "blank" },
+      "whenEmpty": { "action": "blank" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "active",
+      "source": { "kind": "path", "scope": "record", "path": ["on"] },
+      "steps": [{ "op": "boolean", "trueValues": ["1"], "falseValues": ["0"] }],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "blank" },
+      "whenEmpty": { "action": "blank" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "phone",
+      "source": {
+        "kind": "pick",
+        "scope": "record",
+        "arrayPath": ["contacts"],
+        "select": { "by": "match", "field": ["type"], "equals": "mobile" },
+        "valuePath": ["value"],
+        "onNone": "missing",
+        "onMany": "error"
+      },
+      "steps": [],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "blank" },
+      "whenEmpty": { "action": "blank" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "memo",
+      "source": { "kind": "path", "scope": "record", "path": ["memo"] },
+      "steps": [],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "blank" },
+      "whenEmpty": { "action": "blank" },
+      "onError": { "action": "error" }
+    },
+    {
+      "columnId": "productCode",
+      "source": { "kind": "path", "scope": "item", "path": ["sku"] },
+      "steps": [],
+      "whenMissing": { "action": "blank" },
+      "whenNull": { "action": "error" },
+      "whenEmpty": { "action": "error" },
+      "onError": { "action": "error" }
+    }
+  ],
+  "csv": { "bom": true, "lineEnding": "CRLF", "delimiter": ",", "formulaPolicy": "escape" },
+  "errorMode": "partial",
+  "createdAt": "2026-10-17T00:00:00+09:00",
+  "updatedAt": "2026-10-17T00:00:00+09:00"
+}

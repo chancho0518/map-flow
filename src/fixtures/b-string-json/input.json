@@ -1,0 +1,47 @@
+{
+  "meta": { "exportedAt": "2026-10-01T00:00:00Z", "count": 5 },
+  "data": {
+    "items": [
+      {
+        "id": 1,
+        "custId": "C-0001",
+        "attrs": "{\"name\":\"박민수\",\"tier\":\"gold\",\"contact\":{\"mobile\":\"010-1111-2222\"}}",
+        "signup": "2025-03-01T15:30:00Z",
+        "balance": 100,
+        "enabled": "Y"
+      },
+      {
+        "id": 2,
+        "custId": "C-0002",
+        "attrs": { "name": "최지은", "tier": "silver" },
+        "signup": "2025-03-02T09:00:00+09:00",
+        "balance": 250,
+        "enabled": "N"
+      },
+      {
+        "id": 3,
+        "custId": "C-0003",
+        "attrs": "\"{\\\"name\\\":\\\"정하늘\\\",\\\"tier\\\":\\\"vip\\\"}\"",
+        "signup": "2025-02-28T23:59:59-05:00",
+        "balance": 0,
+        "enabled": "Y"
+      },
+      {
+        "id": 4,
+        "custId": "C-0004",
+        "attrs": null,
+        "signup": "2025-04-01T00:00:00Z",
+        "balance": 10,
+        "enabled": "Y"
+      },
+      {
+        "id": 5,
+        "custId": "C-0005",
+        "attrs": "{\"name\":\"오류\",",
+        "signup": "2025-05-01T12:00:00Z",
+        "balance": 5,
+        "enabled": "N"
+      }
+    ]
+  }
+}

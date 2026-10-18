@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "stats": { "sourceRecords": 3, "outputRows": 3, "failedRecords": 0, "failedRows": 0 },
+  "errors": []
+}
